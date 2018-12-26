@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wadedwyane.www.mapper.TeacherMapper">
+
+    <resultMap id="BaseResult" type="Teacher">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="location" property="location" jdbcType="INTEGER"/>
+        <result column="degree" property="degree" jdbcType="VARCHAR"/>
+        <result column="student_count" property="studentCount" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="Teacher">
+        INSERT INTO
+          teacher (name, age, degree, student_count)
+        values
+          (#{name}, #{age}, #{degree}, #{studentCount})
+    </insert>
+
+    <delete id="deleteTeacherById" parameterType="Long">
+        DELETE from
+          teacher
+        WHERE
+          id = #{id}
+    </delete>
+
+    <update id="updateTeacherById" parameterType="Teacher">
+        UPDATE teacher
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="degree != null">degree = #{degree},</if>
+            <if test="studentCount != null">student_count = #{studentCount}</if>
+        </set>
+        WHERE
+        id = #{id}
+    </update>
+
+    <select id="selectTeacherById" parameterType="Long" resultMap="BaseResult">
+        SELECT * FROM teacher WHERE id = #{id}
+    </select>
+
+    <!--动态sql-->
+
+
+</mapper>
