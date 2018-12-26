@@ -17,6 +17,6 @@ public class SpringcloudeurekaApplication extends SpringBootServletInitializer {
         return builder.sources(SpringcloudeurekaApplication.class);
     }
 
-    
+
 }
 
