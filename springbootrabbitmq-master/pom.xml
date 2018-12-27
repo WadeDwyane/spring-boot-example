@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.wadedwyane.www</groupId>
-    <artifactId>springcloudeureka</artifactId>
+    <artifactId>springbootrabbitmq</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springcloudeureka</name>
-    <description>SpringCloudEurekaDemo</description>
+    <name>springbootrabbitmq</name>
+    <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -31,15 +31,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.googlecode.log4jdbc</groupId>
-            <artifactId>log4jdbc</artifactId>
-            <version>1.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
-            <version>1.2.6.RELEASE</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
     </dependencies>
 
