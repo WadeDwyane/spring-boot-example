@@ -11,7 +11,7 @@ import java.util.List;
 @Controller
 public class ExampleController {
 
-    @RequestMapping("/")
+    @RequestMapping("/hello")
     public String hello(ModelMap modelMap) {
         modelMap.addAttribute("message", "www.wadedwyane.com");
         return "hello";
