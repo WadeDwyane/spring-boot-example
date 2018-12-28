@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.wadedwyane.www</groupId>
-    <artifactId>springbootredis</artifactId>
+    <artifactId>springredissession</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springbootredis</name>
-    <description>Spring Boot Redis</description>
+    <name>springredissession</name>
+    <description>Spring Redis Session</description>
 
     <properties>
         <java.version>1.8</java.version>
