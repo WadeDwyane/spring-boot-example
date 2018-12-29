@@ -1,7 +1,6 @@
 package com.wadedwyane.www.scheduler;
 
 import com.wadedwyane.www.job.ScheduledJob;
-import com.wadedwyane.www.job.ScheduledJob2;
 import com.wadedwyane.www.job.SimpleJob;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +10,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class CronScheduler {
 
-    @Autowired
-    SchedulerFactoryBean schedulerFactoryBean;
+    /*@Autowired
+    SchedulerFactoryBean schedulerFactoryBean;*/
 
     public void scheduledJobs() throws SchedulerException {
-        Scheduler scheduler = schedulerFactoryBean.getScheduler();
+        SchedulerFactoryBean bean = new SchedulerFactoryBean();
+        Scheduler scheduler = bean.getScheduler();
         scheduleJob1(scheduler);
         scheduleJob2(scheduler);
     }
@@ -33,6 +33,4 @@ public class CronScheduler {
         CronTrigger cronTrigger = TriggerBuilder.newTrigger().withIdentity("trigger3", "group3").withSchedule(scheduleBuilder).build();
         scheduler.scheduleJob(jobDetail, cronTrigger);
     }
-
-
 }
