@@ -28,6 +28,4 @@ public class SpringdatajpaApplication extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return  builder.sources(SpringdatajpaApplication.class);
     }
-
-
 }

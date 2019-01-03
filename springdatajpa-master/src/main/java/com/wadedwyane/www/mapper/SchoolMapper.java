@@ -4,9 +4,11 @@ package com.wadedwyane.www.mapper;
 import com.wadedwyane.www.entity.SchoolEntity;
 import org.apache.ibatis.annotations.*;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.stereotype.Component;
 
 @Mapper
 @EnableAutoConfiguration
+@Component
 public interface SchoolMapper {
 
     @Insert("insert into school(name, location, student_count) values (#{name}, #{location}, #{studentCount})")
