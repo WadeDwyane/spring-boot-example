@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wadedwyane.www.mapper.FootballPlayerMapper1">
+
+    <resultMap id="BaseResult" type="FootballPlayer">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="FootballPlayer">
+        INSERT INTO
+          footballplayer (name, age)
+        values
+          (#{name}, #{age})
+    </insert>
+
+    <delete id="delete" parameterType="Long">
+        delete from
+        footballplayer
+        where
+        id = #{id}
+    </delete>
+
+    <update id="update" parameterType="FootballPlayer">
+        update footballplayer
+        set
+        name = #{name}, age = #{age}
+        where id = #{id}
+    </update>
+
+    <select id="select" parameterType="Long" resultMap="BaseResult">
+        select * from
+        footballplayer
+        where id = #{id}
+    </select>
+</mapper>

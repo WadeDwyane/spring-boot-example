@@ -10,5 +10,8 @@
         <typeAlias alias="LinkedList" type="java.util.LinkedList" />
 
         <typeAlias type="com.wadedwyane.www.entity.Teacher" alias="Teacher"/>
+
+        <typeAlias type="com.wadedwyane.www.entity.FootballPlayer" alias="FootballPlayer"/>
+
     </typeAliases>
 </configuration>
