@@ -1,6 +1,6 @@
-## spring-cloud-example ##
+## spring-boot-example ##
 
-spring-cloud-example是作者在学习Spring Boot过程中的所有demo的一个集合。
+spring-boot-example是作者在学习Spring Boot过程中的所有demo的一个集合。
 
 ### springbootactivemq-master ###
 springbootactivemq-master是在springboot快速引入ActiveMQ的demo。
