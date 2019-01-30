@@ -35,8 +35,7 @@ public class TestRedisTemplate {
     @Test
     public void testObj() {
         User user = new User("zhangsanfeng", 98, 1, 90, "武当山掌门人,武术高超,技艺精湛", "张无忌太爷爷");
-        ValueOperations<String, User> operations =
-                redisTemplate.opsForValue();
+        ValueOperations<String, User> operations = redisTemplate.opsForValue();
         operations.set("wds", user);
         User u = operations.get("wds");
         System.out.println("user:" + u.toString());
@@ -48,8 +47,7 @@ public class TestRedisTemplate {
     @Test
     public void testExpire() throws InterruptedException {
         User user = new User("达摩祖师", 100, 1, 92, "少林寺掌门人,来自印度,最后成了舍利子", "河南嵩山少林寺");
-        ValueOperations<String, User> operations =
-                redisTemplate.opsForValue();
+        ValueOperations<String, User> operations = redisTemplate.opsForValue();
         //这里使用MILLSECONDS作单位时,可能会报错,需要升级redis版本.
         //set方法中,可以给设置缓存时间
         operations.set("sls", user, 1, TimeUnit.SECONDS);
@@ -60,7 +58,6 @@ public class TestRedisTemplate {
         } else {
             System.out.println("sls 不存在");
         }
-
     }
 
     /**
@@ -123,7 +120,7 @@ public class TestRedisTemplate {
      */
     @Test
     public void testSet() {
-        String key = "";
+        String key = "key";
         SetOperations<String, String> setOperations = redisTemplate.opsForSet();
         setOperations.add(key, "www.");
         setOperations.add(key, "wadedwyane");
@@ -148,6 +145,7 @@ public class TestRedisTemplate {
         setOperations.add(key1, "miami");
         setOperations.add(key1, "dwyane");
         setOperations.add(key1, "wade");
+        setOperations.add(key1, "james");
 
         setOperations.add(key2, "wade");
         setOperations.add(key2, "nba");
@@ -167,19 +165,43 @@ public class TestRedisTemplate {
     @Test
     public void testUnions() {
         SetOperations<String, String> set = redisTemplate.opsForSet();
-        String key3 = "setMore3";
-        String key4 = "setMore4";
-        set.add(key3, "it");
-        set.add(key3, "you");
-        set.add(key3, "xx");
-        set.add(key4, "aa");
-        set.add(key4, "bb");
-        set.add(key4, "know");
+        String key3 = "key3";
+        String key4 = "key4";
+        set.add(key3, "miami");
+        set.add(key3, "heat");
+        set.add(key3, "nba");
+        set.add(key4, "wade");
+        set.add(key4, "james");
+        set.add(key4, "bosh");
         Set<String> unions = set.union(key3, key4);
         for (String v : unions) {
             System.out.println("unions value :" + v);
         }
     }
+
+    @Test
+    public void testZset() {
+        String key = "zset";
+        redisTemplate.delete(key);
+        ZSetOperations<String, String> zset = redisTemplate.opsForZSet();
+        zset.add(key, "wade", 1);
+        zset.add(key, "nba", 10);
+        zset.add(key, "miami", 5);
+        zset.add(key, "heat", 2);
+
+        Set<String> zsets = zset.range(key, 0, 3);
+        for (String v : zsets) {
+            System.out.println("zset value :" + v);
+        }
+
+        System.out.println("------------------------");
+
+        Set<String> zsetB = zset.rangeByScore(key, 0, 3);
+        for (String v : zsetB) {
+            System.out.println("zsetB value :" + v);
+        }
+    }
+
 
     @Test
     public void test() {

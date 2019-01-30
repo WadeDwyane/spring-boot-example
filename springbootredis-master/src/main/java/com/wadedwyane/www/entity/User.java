@@ -75,13 +75,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name=" + name +
-                ", age='" + age + '\'' +
-                ", sex='" + sex + '\'' +
-                ", score='" + score + '\'' +
-                ", describe='" + describe + '\'' +
-                ", remark='" + remark + '\'' +
-                '}';
+        return "User{" + "name=" + name + ", age='" + age + '\'' + ", sex='" + sex + '\'' + ", score='"
+                + score + '\'' + ", describe='" + describe + '\'' + ", remark='" + remark + '\'' + '}';
     }
 }
