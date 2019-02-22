@@ -26,7 +26,7 @@ public class MemcachedTests {
         //set:第一个参数是key
         //第二个参数是过期时间,超过这个时间,这个值将会被替换出去,0表示永久存储(默认一个月)
         //第三个参数是value,可以是任意可序列化的类型
-        memcachedClient.set("hello", 0, "hello, xmemcached");
+        memcachedClient.set("hello", 0, "hello, world");
         String value = memcachedClient.get("hello");
         System.out.println("hello = " + value);
         memcachedClient.delete("hello");
@@ -39,15 +39,15 @@ public class MemcachedTests {
      */
     @Test
     public void testMore() throws Exception {
-        if (memcachedClient.set("hello", 0, "today is a sunny day ")) {
+        if (!memcachedClient.set("hello", 0, "today is a sunny day ")) {
             System.err.println("set error");
         }
 
-        if (memcachedClient.set("hello", 0, "wadedwyane")) {
+        if (!memcachedClient.add("hello", 0, "wadedwyane")) {
             System.err.println("Add error, key is existed");
         }
         //替换掉已经存在的key的值
-        if (memcachedClient.replace("hello", 0, "replace hello")) {
+        if (!memcachedClient.replace("hello", 0, "replace hello")) {
             System.err.println("replace error");
         }
 
@@ -104,6 +104,7 @@ public class MemcachedTests {
     /**
      * 更新缓存过期时间, memcached已经支持touch协议,只需要传递key的缓存超时时间即可
      * 如果此处报错,那么请更新到支持touch协议的memcached客户端
+     *
      * @throws Exception
      */
     @Test
